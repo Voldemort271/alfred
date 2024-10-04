@@ -26,7 +26,7 @@ export default function RootLayout({
           <div className="w-screen">
             <SaleBanner />
           </div>
-          <div className="sticky top-0 h-full w-screen">
+          <div className="sticky top-0 z-50 h-full w-screen">
             <Navbar />
           </div>
           {children}

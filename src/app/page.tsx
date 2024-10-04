@@ -1,7 +1,10 @@
+import Header from "@/components/home/header";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
-      hi
-    </main>
+    <div>
+      <Header />
+      <div className="py-20"></div>
+    </div>
   );
 }
