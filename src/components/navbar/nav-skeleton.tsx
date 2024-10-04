@@ -60,7 +60,7 @@ const NavSkeleton = ({ children }: Props) => {
         </div>
       </nav>
       <div
-        className={`flex w-full flex-col gap-5 overflow-y-clip px-5 font-medium uppercase transition-all ${
+        className={`flex w-full flex-col gap-5 overflow-y-clip bg-zinc-100 px-5 font-medium uppercase transition-all ${
           toggle ? "border-b-2 border-zinc-200 py-5" : "h-0"
         }`}
       >
