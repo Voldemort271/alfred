@@ -30,7 +30,7 @@ const Promotions = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-12 bg-neutral-950 p-24 text-zinc-100 md:pr-40">
+    <div className="flex flex-col gap-12 bg-neutral-950 p-12 text-zinc-100 sm:p-24 md:pr-40">
       <div className="text-4xl font-semibold leading-normal md:text-6xl md:leading-normal">{`${promotions_data[index]?.text}`}</div>
       <div className="text-xl font-medium">{`- ${promotions_data[index]?.author}`}</div>
       <div className="h-px w-full bg-zinc-600">
