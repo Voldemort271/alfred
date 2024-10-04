@@ -5,13 +5,13 @@ import Button from "@/components/ui/button";
 
 const Header = () => {
   return (
-    <div className="relative flex h-[90vh] flex-col items-start justify-center gap-5 px-12 py-5 text-zinc-100">
+    <div className="relative flex min-h-[90dvh] flex-col items-start justify-center gap-5 px-12 py-5 text-zinc-100">
       <Image
         src={HeaderPic}
         alt={"Header Picture"}
         className="absolute left-0 top-0 -z-10 h-full w-screen object-cover"
       />
-      <div className="text-6xl font-semibold">
+      <div className="text-4xl font-semibold sm:text-6xl">
         The Luxury Clearance <br />{" "}
         <span className="font-light">Early Access live now</span>
       </div>
