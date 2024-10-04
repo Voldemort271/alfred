@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply overscroll-none
+}
+
+body {
+  @apply bg-zinc-100 text-zinc-900 font-normal m-0 p-0 w-screen h-full overflow-x-scroll relative
+}
