@@ -9,14 +9,14 @@ const Header = () => {
       <Image
         src={HeaderPic}
         alt={"Header Picture"}
-        className="absolute left-0 top-0 -z-10 h-full w-screen object-cover"
+        className="absolute left-0 top-0 -z-10 h-full w-full object-cover"
       />
       <div className="text-4xl font-semibold sm:text-6xl">
         The Luxury Clearance <br />{" "}
         <span className="font-light">Early Access live now</span>
       </div>
       <div className="max-w-screen-sm">
-        Enrol in the Alfred Gold membership to avail Luxury Clearance discounts
+        Enroll in the Alfred Gold membership to avail Luxury Clearance discounts
         as early as two weeks before the sale.
       </div>
       <Button variant={"transparent"}>see plans</Button>

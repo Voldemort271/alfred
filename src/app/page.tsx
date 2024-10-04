@@ -1,10 +1,11 @@
 import Header from "@/components/home/header";
+import Promotions from "@/components/home/promotions";
 
 export default function Home() {
   return (
     <div>
       <Header />
-      <div className="py-20"></div>
+      <Promotions />
     </div>
   );
 }

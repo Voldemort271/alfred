@@ -1,0 +1,13 @@
+.carouselIndicator {
+  @apply bg-zinc-200 h-full;
+  animation: indicate 5000ms ease-in-out;
+}
+
+@keyframes indicate {
+  0% {
+    @apply w-0 opacity-100;
+  }
+  100% {
+    @apply w-full opacity-0;
+  }
+}
