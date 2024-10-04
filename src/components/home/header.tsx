@@ -5,7 +5,7 @@ import Button from "@/components/ui/button";
 
 const Header = () => {
   return (
-    <div className="relative flex min-h-[90dvh] flex-col items-start justify-center gap-5 px-12 py-5 text-zinc-100">
+    <div className="relative flex min-h-[90svh] flex-col items-start justify-center gap-5 px-12 py-5 text-zinc-100">
       <Image
         src={HeaderPic}
         alt={"Header Picture"}
