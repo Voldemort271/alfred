@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className="relative flex min-h-[90svh] flex-col items-start justify-center gap-5 px-12 py-5 text-zinc-100">
       <motion.div
-        className="absolute left-0 top-0 -z-10 w-full"
+        className="absolute left-0 top-0 -z-10 h-full w-full"
         style={{ scale, opacity }}
       >
         <Image
