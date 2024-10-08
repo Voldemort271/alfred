@@ -9,13 +9,12 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const Header = () => {
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.75]);
 
   return (
-    <div className="relative flex min-h-[90svh] flex-col items-start justify-center gap-5 px-12 py-5 text-zinc-100">
+    <div className="relative flex min-h-[90svh] flex-col items-start justify-center gap-5 overflow-clip px-12 py-5 text-zinc-100">
       <motion.div
         className="absolute left-0 top-0 -z-10 h-full w-full"
-        style={{ scale, opacity }}
+        style={{ scale }}
       >
         <Image
           src={HeaderPic}
