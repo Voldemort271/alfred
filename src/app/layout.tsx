@@ -4,6 +4,7 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "@/trpc/react";
 import SaleBanner from "@/components/navbar/sale-banner";
 import Navbar from "@/components/navbar/navbar";
+import Footer from "@/components/footer/footer";
 
 // TODO: Integrate GitHub CI
 
@@ -32,6 +33,9 @@ export default function RootLayout({
             <Navbar />
           </div>
           {children}
+          <div className="w-screen">
+            <Footer />
+          </div>
         </TRPCReactProvider>
       </body>
     </html>

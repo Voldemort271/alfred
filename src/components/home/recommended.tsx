@@ -2,7 +2,7 @@ import React from "react";
 
 import { db } from "@/server/db";
 import type { Product } from "@prisma/client";
-import ProductCard from "@/components/product-card";
+import ProductCard from "@/components/ui/product-card";
 
 const Recommended = async () => {
   const products: Product[] = await db.product.findMany({

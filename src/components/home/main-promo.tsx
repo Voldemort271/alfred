@@ -12,10 +12,10 @@ const MainPromo = () => {
         </div>
         <div>Classy shirts for every occasion.</div>
         <div className="flex w-full flex-wrap gap-2.5 pt-5">
-          <Button variant="dark" size="large">
+          <Button variant="dark" constrain={"no"}>
             view shirts
           </Button>
-          <Button size="large">browse shop</Button>
+          <Button constrain={"no"}>browse shop</Button>
         </div>
       </div>
       <Image

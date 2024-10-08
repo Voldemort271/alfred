@@ -5,6 +5,7 @@ interface Props {
   variant?: "primary" | "dark" | "transparent" | "disabled";
   size?: "small" | "medium" | "large";
   disabled?: boolean;
+  constrain?: "yes" | "no";
   children: React.ReactNode;
   clickEvent?: () => void;
 }
@@ -20,14 +21,19 @@ const button = cva(["font-medium truncate uppercase"], {
       disabled: ["bg-zinc-400 text-zinc-200 pointer-events-none"],
     },
     size: {
-      small: ["text-sm", "py-2", "px-4", "max-w-40"],
-      medium: ["text-base", "py-3", "px-6", "max-w-48"],
-      large: ["text-lg", "py-4", "px-8", "max-w-64"],
+      small: ["text-sm", "py-2", "px-4"],
+      medium: ["text-base", "py-3", "px-6"],
+      large: ["text-lg", "py-4", "px-8"],
+    },
+    constrain: {
+      yes: ["max-w-48"],
+      no: [],
     },
   },
   defaultVariants: {
     variant: "primary",
     size: "medium",
+    constrain: "yes",
   },
 });
 
@@ -37,6 +43,7 @@ const Button = (props: Props) => {
       className={button({
         variant: props.disabled ? "disabled" : props.variant,
         size: props.size,
+        constrain: props.constrain,
       })}
     >
       {props.children}
