@@ -1,7 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 
-// TODO: Update seeds routine to only seed products, since user seeding is unusable
-
 const prisma = new PrismaClient();
 
 const productNames = [
@@ -61,7 +59,7 @@ async function main() {
   await prisma.product.createMany({
     data: productNames.map((name) => ({
       name,
-      img: "https://picsum.photos/400/600",
+      img: `https://picsum.photos/id/${Math.floor(Math.random() * 100) + 1}/400/600`,
       price: Math.floor(Math.random() * 100) + 100,
       stock: Math.floor(Math.random() * 10) + 1,
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel finibus nunc, id convallis arcu. Integer vel purus vel neque fermentum tincidunt.",
