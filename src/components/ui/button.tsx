@@ -20,9 +20,9 @@ const button = cva(["font-medium truncate uppercase"], {
       disabled: ["bg-zinc-400 text-zinc-200 pointer-events-none"],
     },
     size: {
-      small: ["text-sm", "py-2", "px-4", "max-w-32"],
-      medium: ["text-base", "py-3", "px-6", "max-w-40"],
-      large: ["text-lg", "py-4", "px-8", "max-w-48"],
+      small: ["text-sm", "py-2", "px-4", "max-w-40"],
+      medium: ["text-base", "py-3", "px-6", "max-w-48"],
+      large: ["text-lg", "py-4", "px-8", "max-w-64"],
     },
   },
   defaultVariants: {

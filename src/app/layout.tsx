@@ -6,7 +6,6 @@ import SaleBanner from "@/components/navbar/sale-banner";
 import Navbar from "@/components/navbar/navbar";
 
 // TODO: Integrate GitHub CI
-// TODO: Redeploy git repo, making it public this time
 
 const jost = Jost({
   subsets: ["latin"],
