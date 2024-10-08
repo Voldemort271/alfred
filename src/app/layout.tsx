@@ -2,8 +2,11 @@ import "@/styles/globals.scss";
 import { Jost } from "next/font/google";
 import { type Metadata } from "next";
 import { TRPCReactProvider } from "@/trpc/react";
-import SaleBanner from "@/components/sale-banner";
+import SaleBanner from "@/components/navbar/sale-banner";
 import Navbar from "@/components/navbar/navbar";
+
+// TODO: Integrate GitHub CI
+// TODO: Redeploy git repo, making it public this time
 
 const jost = Jost({
   subsets: ["latin"],

@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import HeaderPic from "../../../public/header.png";
+import HeaderPic from "../../../public/images/header.png";
 import Button from "@/components/ui/button";
+
+// TODO: explore bg image zooming on scroll
 
 const Header = () => {
   return (

@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
+// TODO: Update seeds routine to only seed products, since user seeding is unusable
+
 const prisma = new PrismaClient();
 
 async function main() {
