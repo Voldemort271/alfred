@@ -4,6 +4,7 @@ import { type Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+import EmailProvider from "next-auth/providers/email";
 import { env } from "@/env";
 import { db } from "@/server/db";
 
@@ -56,6 +57,18 @@ export const authOptions: NextAuthOptions = {
     GitHubProvider({
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
+    }),
+    EmailProvider({
+      server: {
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // Use TLS
+        auth: {
+          user: env.GMAIL_USER, // Your Gmail email
+          pass: env.GMAIL_APP_PASS, // Your App Password from Google
+        },
+      },
+      from: env.GMAIL_ALIAS,
     }),
     /**
      * ...add more providers here.

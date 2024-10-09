@@ -29,6 +29,9 @@ export const env = createEnv({
     GOOGLE_CLIENT_SECRET: z.string(),
     GITHUB_CLIENT_ID: z.string(),
     GITHUB_CLIENT_SECRET: z.string(),
+    GMAIL_USER: z.string(),
+    GMAIL_APP_PASS: z.string(),
+    GMAIL_ALIAS: z.string(),
   },
 
   /**
@@ -56,6 +59,9 @@ export const env = createEnv({
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+    GMAIL_USER: process.env.GMAIL_USER,
+    GMAIL_APP_PASS: process.env.GMAIL_APP_PASS,
+    GMAIL_ALIAS: process.env.GMAIL_ALIAS,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
