@@ -6,7 +6,7 @@ import {
   publicProcedure,
 } from "@/server/api/trpc";
 
-export const postRouter = createTRPCRouter({
+export const productRouter = createTRPCRouter({
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
@@ -35,7 +35,10 @@ export const postRouter = createTRPCRouter({
     return post ?? null;
   }),
 
-  getSecretMessage: protectedProcedure.query(() => {
-    return "you can now see this secret message!";
+  getFeed: publicProcedure.query(async ({ ctx }) => {
+    return ctx.db.product.findMany({
+      orderBy: { id: "asc" },
+      take: 4,
+    });
   }),
 });

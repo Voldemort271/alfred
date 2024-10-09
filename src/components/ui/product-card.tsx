@@ -12,7 +12,7 @@ const ProductCard = (props: Product) => {
         width={400}
         height={600}
         alt={props.name}
-        className="w-full object-cover"
+        className="aspect-[5/6] w-full object-cover"
       />
       <div className="border-x border-x-zinc-200 p-5">
         <div className="track w-full truncate text-xl font-medium leading-normal">

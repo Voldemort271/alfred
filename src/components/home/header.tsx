@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 const Header = () => {
   const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 1.5]);
 
   return (
     <div className="relative flex min-h-[90svh] flex-col items-start justify-center gap-5 overflow-clip px-12 py-5 text-zinc-100">
