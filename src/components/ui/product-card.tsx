@@ -6,7 +6,7 @@ import type { Product } from "@prisma/client";
 
 const ProductCard = (props: Product) => {
   return (
-    <div key={props.id} className="w-full">
+    <div key={props.id} className="w-full border-x border-x-zinc-200">
       <Image
         src={props.img ?? ""}
         width={400}
@@ -14,7 +14,7 @@ const ProductCard = (props: Product) => {
         alt={props.name}
         className="aspect-[5/6] w-full object-cover"
       />
-      <div className="border-x border-x-zinc-200 p-5">
+      <div className="p-5">
         <div className="track w-full truncate text-xl font-medium leading-normal">
           {props.name}
         </div>

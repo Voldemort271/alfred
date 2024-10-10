@@ -45,6 +45,7 @@ const Button = (props: Props) => {
         size: props.size,
         constrain: props.constrain,
       })}
+      onClick={props.clickEvent}
     >
       {props.children}
     </button>

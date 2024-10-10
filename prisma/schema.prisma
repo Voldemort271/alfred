@@ -110,14 +110,15 @@ model Cart {
 }
 
 model Product {
-  id    String  @id @default(cuid())
-  name  String
-  img   String?
-  price Float
-  fit   Fit     @default(Unisex)
-  size  Size    @default(M)
-  stock Int     @default(1)
-  desc  String?
+  id       String   @id @default(cuid())
+  name     String
+  img      String?
+  price    Float
+  fit      Fit      @default(Unisex)
+  category Category @default(Denim)
+  size     Size     @default(M)
+  stock    Int      @default(1)
+  desc     String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -146,6 +147,12 @@ enum Fit {
   Men
   Women
   Unisex
+}
+
+enum Category {
+  Denim
+  Shirt
+  Jacket
 }
 
 enum Size {

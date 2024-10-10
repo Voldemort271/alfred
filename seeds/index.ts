@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import { Category, Fit, PrismaClient, Size } from "@prisma/client";
+import { randomEnumKey } from "../utils/random-enum-key";
 
 const prisma = new PrismaClient();
 
@@ -62,6 +63,9 @@ async function main() {
       img: `https://picsum.photos/id/${Math.floor(Math.random() * 100) + 1}/400/600`,
       price: Math.floor(Math.random() * 100) + 100,
       stock: Math.floor(Math.random() * 10) + 1,
+      fit: randomEnumKey(Fit) as Fit,
+      size: randomEnumKey(Size) as Size,
+      category: randomEnumKey(Category) as Category,
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel finibus nunc, id convallis arcu. Integer vel purus vel neque fermentum tincidunt.",
     })),
   });

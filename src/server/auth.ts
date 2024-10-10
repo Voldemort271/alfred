@@ -63,6 +63,8 @@ export const authOptions: NextAuthOptions = {
         host: "smtp.gmail.com",
         port: 465,
         secure: true, // Use TLS
+
+        // TODO: Create Alfred email and use that instead
         auth: {
           user: env.GMAIL_USER, // Your Gmail email
           pass: env.GMAIL_APP_PASS, // Your App Password from Google
@@ -80,6 +82,12 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
+  pages: {
+    // signIn: "/auth/sign-in",
+    // signOut: "/auth/signout",
+    // error: "/auth/error", // Error code passed in query string as ?error=
+    // verifyRequest: "/auth/verify-request", // (used for check email message)
+  },
 };
 
 /**
