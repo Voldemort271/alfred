@@ -2,23 +2,18 @@
 
 import React, { useState } from "react";
 import ProductCard from "@/components/ui/product-card";
-import type { Category, Fit, Product, Size } from "@prisma/client";
+import type { Product } from "@prisma/client";
 import Button from "@/components/ui/button";
 import { debounce } from "../../../utils/debounce";
 import { motion } from "framer-motion";
 import Loading from "@/components/ui/loading";
 import { getPaginatedAll } from "../../../utils/server-actions";
 import FilterBar from "@/components/shop/filter-bar";
+import type { Filters } from "@/../utils/flattened-filters";
 
 interface Props {
   initialData: Product[];
   initialCount: number;
-}
-
-interface Filters {
-  category: Category[];
-  fit: Fit[];
-  size: Size[];
 }
 
 // TODO: Try making component more general to use in different category pages as well
