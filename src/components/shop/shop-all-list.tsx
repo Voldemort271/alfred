@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import Loading from "@/components/ui/loading";
 import { getPaginatedAll } from "../../../utils/server-actions";
 import FilterBar from "@/components/shop/filter-bar";
-import type { Filters } from "@/../utils/flattened-filters";
 
 interface Props {
   initialData: Product[];
@@ -23,7 +22,7 @@ const ShopAllList = ({ initialData, initialCount }: Props) => {
   const [page, setPage] = useState(0);
   const [products, setProducts] = useState<Product[]>(initialData);
 
-  const [filters, setFilters] = useState<Filters>();
+  // const [filters, setFilters] = useState<Filters>();
 
   const loadMore = async () => {
     try {

@@ -1,22 +1,9 @@
 import "@/styles/globals.scss";
-import { Jost } from "next/font/google";
-import { type Metadata } from "next";
 import SaleBanner from "@/components/navbar/sale-banner";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
 
 // TODO: Integrate GitHub CI
-
-const jost = Jost({
-  subsets: ["latin"],
-  display: "swap",
-});
-
-export const metadata: Metadata = {
-  title: "Alfred | Quality apparel from Scandinavia",
-  description: "Some metadata for now uwu",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-};
 
 export default function RootLayout({
   children,

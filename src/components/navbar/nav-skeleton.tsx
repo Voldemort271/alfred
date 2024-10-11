@@ -39,7 +39,7 @@ const NavSkeleton = ({ children }: Props) => {
   return (
     <>
       <nav
-        className={`flex flex-row items-center justify-between border-b-2 border-b-zinc-200 bg-zinc-100 px-5 sm:px-12 ${isShrunk ? "py-5 sm:py-2" : "py-5"} text-base transition-all`}
+        className={`flex flex-row items-center justify-between border-b-2 border-b-zinc-200 bg-zinc-100 px-5 sm:px-12 ${isShrunk ? "h-16 py-5 sm:py-2" : "h-24 py-5"} text-base transition-all`}
       >
         <div
           className={`transition-all ${isShrunk ? "text-2xl" : "text-2xl sm:text-3xl"} font-semibold uppercase`}
