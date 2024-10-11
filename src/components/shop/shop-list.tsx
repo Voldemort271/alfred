@@ -18,9 +18,7 @@ interface Props {
   initialData: Product[];
 }
 
-// TODO: Try making component more general to use in different category pages as well
-
-const ShopAllList = ({ initialData }: Props) => {
+const ShopList = ({ initialData }: Props) => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [products, setProducts] = useState<Product[]>(initialData);
@@ -128,4 +126,4 @@ const ShopAllList = ({ initialData }: Props) => {
   );
 };
 
-export default ShopAllList;
+export default ShopList;

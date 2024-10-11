@@ -5,7 +5,7 @@ import type { Product } from "@prisma/client";
 import { api } from "@/trpc/server";
 import dynamic from "next/dynamic";
 
-const ShopAllList = dynamic(() => import("@/components/shop/shop-all-list"), {
+const ShopList = dynamic(() => import("@/components/shop/shop-list"), {
   ssr: false,
 });
 
@@ -19,7 +19,7 @@ const ShopPage = async () => {
         aliquid animi culpa cum dolores et facere, magnam nisi quaerat quibusdam
         quisquam ratione saepe temporibus unde vel velit voluptate voluptatum!
       </SectionHeader>
-      <ShopAllList initialData={products} />
+      <ShopList initialData={products} />
     </div>
   );
 };
