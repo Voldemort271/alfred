@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { type Dispatch, type SetStateAction, useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -12,14 +12,13 @@ import {
   getFlattenedFilters,
 } from "@/../utils/flattened-filters";
 
-const FilterBar = () => {
-  const [toggle, setToggle] = useState(false);
+interface Props {
+  filters: Filters;
+  setFilters: Dispatch<SetStateAction<Filters>>;
+}
 
-  const [filters, setFilters] = useState<Filters>({
-    category: [],
-    fit: [],
-    size: [],
-  });
+const FilterBar = ({ filters, setFilters }: Props) => {
+  const [toggle, setToggle] = useState(false);
 
   const handleChange = (
     checked: boolean | string,

@@ -11,7 +11,6 @@ const ShopAllList = dynamic(() => import("@/components/shop/shop-all-list"), {
 
 const ShopPage = async () => {
   const products: Product[] = await api.product.getAllPaginated({ page: 0 });
-  const count = await api.product.getLength();
 
   return (
     <div>
@@ -20,7 +19,7 @@ const ShopPage = async () => {
         aliquid animi culpa cum dolores et facere, magnam nisi quaerat quibusdam
         quisquam ratione saepe temporibus unde vel velit voluptate voluptatum!
       </SectionHeader>
-      <ShopAllList initialData={products} initialCount={count} />
+      <ShopAllList initialData={products} />
     </div>
   );
 };

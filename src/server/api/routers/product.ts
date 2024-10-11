@@ -49,33 +49,73 @@ export const productRouter = createTRPCRouter({
       });
     }),
 
+  getPaginated: publicProcedure
+    .input(
+      z.object({
+        filters: z.optional(
+          z.object({
+            size: z.array(z.enum(["XS", "S", "M", "L", "XL"])),
+            fit: z.array(z.enum(["Kids", "Men", "Women", "Unisex"])),
+            category: z.array(z.enum(["Denim", "Jacket", "Shirt"])),
+          }),
+        ),
+        page: z.number().min(0).int(),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      const where: {
+        size?: { in: Size[] };
+        fit?: { in: Fit[] };
+        category?: { in: Category[] };
+      } = {};
+
+      if (input.filters?.size.length) {
+        where.size = { in: input.filters.size };
+      }
+
+      if (input.filters?.fit.length) {
+        where.fit = { in: input.filters.fit };
+      }
+
+      if (input.filters?.category.length) {
+        where.category = { in: input.filters.category };
+      }
+
+      return ctx.db.product.findMany({
+        orderBy: { id: "asc" },
+        where,
+        take: 20,
+        skip: input.page * 20,
+      });
+    }),
+
   getLength: publicProcedure
     .input(
       z.optional(
         z.object({
-          size: z.enum(["XS", "S", "M", "L", "XL"]),
-          fit: z.enum(["Kids", "Men", "Women", "Unisex"]),
-          category: z.enum(["Denim", "Jacket", "Shirt"]),
+          size: z.array(z.enum(["XS", "S", "M", "L", "XL"])),
+          fit: z.array(z.enum(["Kids", "Men", "Women", "Unisex"])),
+          category: z.array(z.enum(["Denim", "Jacket", "Shirt"])),
         }),
       ),
     )
     .query(async ({ ctx, input }) => {
       const where: {
-        size?: Size;
-        fit?: Fit;
-        category?: Category;
+        size?: { in: Size[] };
+        fit?: { in: Fit[] };
+        category?: { in: Category[] };
       } = {};
 
-      if (input?.size) {
-        where.size = input.size;
+      if (input?.size.length) {
+        where.size = { in: input.size };
       }
 
-      if (input?.fit) {
-        where.fit = input.fit;
+      if (input?.fit.length) {
+        where.fit = { in: input.fit };
       }
 
-      if (input?.category) {
-        where.category = input.category;
+      if (input?.category.length) {
+        where.category = { in: input.category };
       }
 
       return ctx.db.product.count({ where });
