@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "@/components/ui/product-card";
 import type { Product } from "@prisma/client";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/custom/button";
 import { debounce } from "../../../utils/debounce";
 import { motion } from "framer-motion";
 import {

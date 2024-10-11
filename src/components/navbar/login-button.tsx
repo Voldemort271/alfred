@@ -1,7 +1,7 @@
 import React from "react";
 import { getServerAuthSession } from "@/server/auth";
 import Link from "next/link";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/custom/button";
 
 // TODO: Integrate more providers (Google, GitHub, email/password)
 // TODO: Customise login/signup page

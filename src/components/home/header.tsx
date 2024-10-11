@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import HeaderPic from "../../../public/images/header.png";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/custom/button";
 
 const Header = () => {
   return (

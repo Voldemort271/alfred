@@ -2,7 +2,7 @@
 
 import React, { type ReactNode } from "react";
 import Image from "next/image";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/custom/button";
 import type { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Link from "next/link";
 import Denim from "@/../public/images/denim.png";
