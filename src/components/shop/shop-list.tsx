@@ -19,7 +19,8 @@ interface Props {
 }
 
 const ShopList = ({ initialData }: Props) => {
-  const [loading, setLoading] = useState(false);
+  const [loadingCount, setLoadingCount] = useState(false);
+  const [loadingData, setLoadingData] = useState(false);
   const [page, setPage] = useState(0);
   const [products, setProducts] = useState<Product[]>(initialData);
   const [count, setCount] = useState(0);
@@ -32,7 +33,7 @@ const ShopList = ({ initialData }: Props) => {
 
   const loadMore = async () => {
     try {
-      setLoading(true);
+      setLoadingCount(true);
       const nextPage = page + 1;
 
       const nextPageProducts = await getPaginatedServer({
@@ -46,7 +47,7 @@ const ShopList = ({ initialData }: Props) => {
           ...nextPageProducts,
         ]);
         setPage(nextPage);
-        setLoading(false);
+        setLoadingCount(false);
       }
     } catch (error) {
       console.error("Error loading more products:", error);
@@ -55,12 +56,12 @@ const ShopList = ({ initialData }: Props) => {
 
   useEffect(() => {
     const func = async () => {
-      setLoading(true);
+      setLoadingData(true);
       const num = await getLengthServer(filters);
       const filteredProducts = await getPaginatedServer({ page: 0, filters });
       setProducts(filteredProducts);
       setCount(num);
-      setLoading(false);
+      setLoadingData(false);
     };
     void func();
   }, [filters]);
@@ -68,7 +69,7 @@ const ShopList = ({ initialData }: Props) => {
   return (
     <div className="relative">
       <FilterBar filters={filters} setFilters={setFilters} />
-      {loading ? (
+      {loadingData ? (
         <div className="flex w-screen flex-col items-center justify-center gap-2.5 border-t border-t-zinc-200 p-12">
           <Loading />
         </div>
@@ -89,26 +90,32 @@ const ShopList = ({ initialData }: Props) => {
       )}
       {count > products.length ? (
         <div>
-          <div>
-            <motion.div
-              className="flex w-screen flex-col items-center justify-center gap-2.5 border-t border-t-zinc-200 p-12"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="text-2xl">
-                Viewing 0 - {products.length} of {count} results
-              </span>
-              <Button
-                clickEvent={debounce(async () => {
-                  await loadMore();
-                })}
-                variant="dark"
+          {loadingCount ? (
+            <div className="flex w-screen flex-col items-center justify-center gap-2.5 border-t border-t-zinc-200 p-12">
+              <Loading />
+            </div>
+          ) : (
+            <div>
+              <motion.div
+                className="flex w-screen flex-col items-center justify-center gap-2.5 border-t border-t-zinc-200 p-12"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
               >
-                Load more
-              </Button>
-            </motion.div>
-          </div>
+                <span className="text-2xl">
+                  Viewing 0 - {products.length} of {count} results
+                </span>
+                <Button
+                  clickEvent={debounce(async () => {
+                    await loadMore();
+                  })}
+                  variant="dark"
+                >
+                  Load more
+                </Button>
+              </motion.div>
+            </div>
+          )}
         </div>
       ) : (
         <motion.div
