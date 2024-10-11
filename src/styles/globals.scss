@@ -9,3 +9,8 @@ html {
 body {
   @apply bg-zinc-100 text-zinc-900 font-normal m-0 p-0 w-screen h-full overflow-x-clip relative
 }
+
+@layer base {
+  :root {
+
+    --radius: 0.5rem}}

@@ -2,31 +2,40 @@
 
 import React, { useState } from "react";
 import ProductCard from "@/components/ui/product-card";
-import type { Product } from "@prisma/client";
+import type { Category, Fit, Product, Size } from "@prisma/client";
 import Button from "@/components/ui/button";
 import { debounce } from "../../../utils/debounce";
 import { motion } from "framer-motion";
 import Loading from "@/components/ui/loading";
+import { getPaginatedAll } from "../../../utils/server-actions";
+import FilterBar from "@/components/shop/filter-bar";
 
 interface Props {
-  data: Product[];
-  count: number;
+  initialData: Product[];
+  initialCount: number;
+}
+
+interface Filters {
+  category: Category[];
+  fit: Fit[];
+  size: Size[];
 }
 
 // TODO: Try making component more general to use in different category pages as well
 
-const ShopAllList = ({ data, count }: Props) => {
+const ShopAllList = ({ initialData, initialCount }: Props) => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
-  const [products, setProducts] = useState<Product[]>(data);
+  const [products, setProducts] = useState<Product[]>(initialData);
+
+  const [filters, setFilters] = useState<Filters>();
 
   const loadMore = async () => {
     try {
       setLoading(true);
       const nextPage = page + 1;
-      const res = await fetch(`/api/products?page=${nextPage}`);
 
-      const nextPageProducts = (await res.json()) as Product[];
+      const nextPageProducts = await getPaginatedAll(nextPage);
 
       if (nextPageProducts.length > 0) {
         setProducts((prevProducts: Product[]): Product[] => [
@@ -42,7 +51,8 @@ const ShopAllList = ({ data, count }: Props) => {
   };
 
   return (
-    <div>
+    <div className="relative">
+      <FilterBar />
       <div className="grid grid-cols-2 md:grid-cols-4">
         {products.map((product: Product) => {
           return (
@@ -56,7 +66,7 @@ const ShopAllList = ({ data, count }: Props) => {
           );
         })}
       </div>
-      {count > products.length ? (
+      {initialCount > products.length ? (
         <div>
           <div>
             {loading ? (
@@ -71,7 +81,7 @@ const ShopAllList = ({ data, count }: Props) => {
                 transition={{ duration: 0.5 }}
               >
                 <span className="text-2xl">
-                  Viewing 0 - {products.length} of {count} results
+                  Viewing 0 - {products.length} of {initialCount} results
                 </span>
                 <Button
                   clickEvent={debounce(async () => {

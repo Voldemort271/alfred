@@ -20,7 +20,7 @@ const ShopPage = async () => {
         aliquid animi culpa cum dolores et facere, magnam nisi quaerat quibusdam
         quisquam ratione saepe temporibus unde vel velit voluptate voluptatum!
       </SectionHeader>
-      <ShopAllList data={products} count={count} />
+      <ShopAllList initialData={products} initialCount={count} />
     </div>
   );
 };
