@@ -13,7 +13,7 @@ import {
 } from "@/../utils/flattened-filters";
 
 const FilterBar = () => {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   const [filters, setFilters] = useState<Filters>({
     category: [],
