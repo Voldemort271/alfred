@@ -37,7 +37,7 @@ const FilterBar = () => {
   };
 
   return (
-    <div className="sticky top-16 z-20 border-b-2 border-b-zinc-200 bg-zinc-100 px-12">
+    <div className="sticky top-16 z-20 border-b-2 border-b-zinc-200 bg-zinc-100 px-5 sm:px-12">
       <div
         className="flex cursor-pointer flex-row items-center justify-between gap-12 py-5 text-xl font-medium"
         onClick={() => setToggle(!toggle)}
