@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Button from "@/components/ui/custom/button";
 import GooglePic from "../../../../public/logos/google.png";
@@ -18,7 +18,13 @@ const SignInPage = () => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") ?? "/";
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("Enter your email");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [email]);
+
   return (
     <motion.div
       className="h-full w-full overflow-scroll px-12 py-24 md:w-2/3 lg:w-1/2 lg:py-32"
@@ -52,10 +58,14 @@ const SignInPage = () => {
         </div>
         <Button
           variant="dark"
-          clickEvent={debounce(() => {
-            safeSignInEmail({ email, callback: callbackUrl });
-            setEmail("");
-          })}
+          disabled={loading}
+          clickEvent={() => {
+            setLoading(true);
+            debounce(() => {
+              safeSignInEmail({ email, callback: callbackUrl });
+              setEmail("");
+            })();
+          }}
         >
           Submit
         </Button>
@@ -68,9 +78,9 @@ const SignInPage = () => {
       <div className="flex flex-row flex-wrap items-center gap-5">
         <Button
           constrain={"no"}
-          clickEvent={() => {
+          clickEvent={debounce(() => {
             void signIn("google", { callbackUrl });
-          }}
+          })}
         >
           <div className="flex items-center gap-2.5">
             <Image src={GooglePic} alt={"Google"} className="h-6 w-auto" />
@@ -79,9 +89,9 @@ const SignInPage = () => {
         </Button>
         <Button
           constrain={"no"}
-          clickEvent={() => {
+          clickEvent={debounce(() => {
             void signIn("github", { callbackUrl });
-          }}
+          })}
         >
           <div className="flex items-center gap-2.5">
             <Image src={GithubPic} alt={"GitHub"} className="h-6 w-auto" />
@@ -90,9 +100,9 @@ const SignInPage = () => {
         </Button>
         <Button
           constrain={"no"}
-          clickEvent={() => {
+          clickEvent={debounce(() => {
             void signIn("discord", { callbackUrl });
-          }}
+          })}
         >
           <div className="flex items-center gap-2.5">
             <Image src={DiscordPic} alt={"Discord"} className="h-6 w-auto" />
