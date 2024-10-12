@@ -1,25 +1,33 @@
+"use client";
+
 import React from "react";
-import { getServerAuthSession } from "@/server/auth";
-import Link from "next/link";
 import Button from "@/components/ui/custom/button";
+import type { Session } from "next-auth";
+import { signIn, signOut } from "next-auth/react";
 
 // TODO: Integrate more providers (Google, GitHub, email/password)
 // TODO: Customise login/signup page
 
-const LoginButton = async () => {
-  const session = await getServerAuthSession();
-
+const LoginButton = ({ session }: { session: Session | null }) => {
   return (
     <div>
       {session && (
-        <Link href={"/api/auth/signout"}>
-          <Button>{session.user.name?.split(" ")[0]}</Button>
-        </Link>
+        <Button
+          clickEvent={() => {
+            void signOut();
+          }}
+        >
+          {session.user.name?.split(" ")[0]}
+        </Button>
       )}
       {!session && (
-        <Link href={"/api/auth/signin"}>
-          <Button>Sign in</Button>
-        </Link>
+        <Button
+          clickEvent={() => {
+            void signIn();
+          }}
+        >
+          Sign in
+        </Button>
       )}
     </div>
   );

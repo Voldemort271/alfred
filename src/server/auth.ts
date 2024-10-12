@@ -45,6 +45,12 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   },
+  pages: {
+    signIn: "/auth/sign-in",
+    error: "/auth/error", // Error code passed in query string as ?error=
+    verifyRequest: "/auth/verify-request",
+    newUser: "/auth/new-user",
+  },
   adapter: PrismaAdapter(db) as Adapter,
   providers: [
     DiscordProvider({
@@ -83,12 +89,6 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
-  pages: {
-    // signIn: "/auth/sign-in",
-    // signOut: "/auth/signout",
-    // error: "/auth/error", // Error code passed in query string as ?error=
-    // verifyRequest: "/auth/verify-request", // (used for check email message)
-  },
 };
 
 /**
